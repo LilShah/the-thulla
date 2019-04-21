@@ -106,12 +106,37 @@ router.post("/login", (req, res) => {
   });
 });
 
-router.route("/get/:id").get(function(request, response) {
-  let id = req.params.id;
+var mongo = require('mongodb');
+var assert = require('assert');
+var url = "https://cloud.mongodb.com/v2/5cb57265014b76984e09f62f#clusters/detail/ThullaDB";
 
-  User.findById(id, function(err, user) {
-    res.json(user);
+router.get('/get-data',function(req,res,next)
+{
+  var resultArray = [];
+  mongo.connect(url,function(err,db)
+  {
+    assert.equal(null,err);
+    var cursor = db.collection('test.user').find();
+    cursor.forEach(function(doc,err){
+      assert.equal(null,err);
+      resultArray.push(doc);
+
+    }, function()
+    {
+      db.close();
+      console.log(resultArray);
+      //res.render('pagename jidahar bhejna ha data',{item:resultArray});
+    });
   });
 });
+
+
+//router.route("/get/:id").get(function(request, response) {
+//  let id = req.params.id;
+
+//  User.findById(id, function(err, user) {
+//    res.json(user);
+//  });
+//});
 
 module.exports = router;
