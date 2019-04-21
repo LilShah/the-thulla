@@ -1,6 +1,7 @@
 #board {
   border-collapse: collapse;
   font-family: monospace;
+  background: green;
 }
 
 #winner {
