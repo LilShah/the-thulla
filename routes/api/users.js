@@ -106,17 +106,12 @@ router.post("/login", (req, res) => {
   });
 });
 
-router
-  .route("/get/:id")
-  .get(function(request, response) {
-    let id = req.params.id;
+router.route("/get/:id").get(function(request, response) {
+  let id = req.params.id;
 
-    User.findById(id, function(err, user) {
-      res.json(user);
-    });
-  })
-  .catch(err => {
-    res.status(404).send("Unable to find user");
+  User.findById(id, function(err, user) {
+    res.json(user);
   });
+});
 
 module.exports = router;
