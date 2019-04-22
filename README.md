@@ -4,6 +4,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## How to run
 
+REQUIRES [NODE.JS](https://nodejs.org/en/download/)
+Clone the Repo
+
 Run the following commands in the project directory:
 
 `npm i --save`

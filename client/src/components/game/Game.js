@@ -108,7 +108,7 @@ export const Thulla = Game({
     deckIndex: 0,
     table: Array(4).fill(null),
     tableIndex: 0,
-    move: 0
+    turn: 0
   }),
 
   moves: {
@@ -128,12 +128,29 @@ export const Thulla = Game({
         G.deckIndex++;
       }
     },
-    playCard(G, ctx) {
-      currentPlayer = null;
-      for (i = 0; i < 52; ++i) {
-        if (deck[i][0] == "SA") currentPlayer = deck[i][1];
-        break;
+    setTurn(G, ctx) {
+      if (G.move === 0) {
+        for (i = 0; i < 52; ++i) {
+          if (G.deck[i][0] == "SA") {
+            ctx.currentPlayer = G.deck[i][1];
+            G.deck[i][0] = null;
+            break;
+          }
+        }
+
+        G.turn++;
       }
-    }
+      if (G.tableIndex === 0) {
+      }
+    },
+    playCard(G, ctx) {}
   }
+});
+
+export const client = Client({
+  game: Thulla,
+  numPlayers: 4,
+  board: Board,
+  multiplayer: { local: true },
+  debug: true
 });

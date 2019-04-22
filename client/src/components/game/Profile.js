@@ -49,8 +49,8 @@ class Profile extends Component {
               <b>Hey there,</b> {user.name}
               <b>Hey there,</b> {this.state.email}
               <p className="flow-text grey-text text-darken-1">
-                You are logged into a full-stack{" "}
-                <span style={{ fontFamily: "monospace" }}>MERN</span> app 👏
+                You are logged into{" "}
+                <span style={{ fontFamily: "monospace" }}>Thulla</span> 👏
               </p>
             </h4>
             <button
@@ -70,7 +70,8 @@ class Profile extends Component {
               style={{
                 width: "140px",
                 borderRadius: "3px",
-                letterSpacing: "1.5px"
+                letterSpacing: "1.5px",
+                margin: "1rem"
               }}
               className="btn btn-large waves-effect waves-light hoverable blue accent-3"
             >

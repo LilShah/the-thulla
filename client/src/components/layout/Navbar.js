@@ -14,8 +14,17 @@ class Navbar extends Component {
               }}
               className="col s5 brand-logo center black-text"
             >
+              Thulla
+            </Link>
+            <Link
+              to="/dashboard"
+              style={{
+                fontFamily: "monospace"
+              }}
+              className="col s5 brand-logo black-text"
+            >
               <i className="material-icons">code</i>
-              MERN
+              Home
             </Link>
           </div>
         </nav>
