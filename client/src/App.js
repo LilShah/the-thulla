@@ -14,7 +14,7 @@ import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import PrivateRoute from "./components/private-route/PrivateRoute";
 import Dashboard from "./components/dashboard/Dashboard";
-import thulla from "./components/game/ThullaGame";
+//import thulla from "./components/game/ThullaGame";
 import Profile from "./components/game/Profile";
 
 // Check for token to keep user logged in
@@ -48,7 +48,7 @@ class App extends Component {
             <Route exact path="/login" component={Login} />
             <Switch>
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
-              <PrivateRoute exact path="/game" component={thulla} />
+              {/* <PrivateRoute exact path="/game" component={thulla} /> */}
               <PrivateRoute exact path="/profile" component={Profile} />
             </Switch>
           </div>
