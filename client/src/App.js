@@ -8,13 +8,16 @@ import { Provider } from "react-redux";
 import store from "./store";
 import "./App.css";
 
+import { Client } from "boardgame.io/react";
+
 import Navbar from "./components/layout/Navbar";
 import Landing from "./components/layout/Landing";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import PrivateRoute from "./components/private-route/PrivateRoute";
 import Dashboard from "./components/dashboard/Dashboard";
-//import thulla from "./components/game/ThullaGame";
+import { Thulla } from "./components/game/Game";
+import Board from "./components/game/Board";
 import Profile from "./components/game/Profile";
 
 // Check for token to keep user logged in
@@ -36,6 +39,24 @@ if (localStorage.jwtToken) {
     window.location.href = "./login";
   }
 }
+export const thullaClient = Client({
+  game: Thulla,
+  numPlayers: 4,
+  board: Board,
+  multiplayer: { local: true },
+  debug: true
+});
+const gameRoute = () => (
+  <div>
+    Player 0<thullaClient playerID="0" />
+    <br />
+    Player 1<thullaClient playerID="1" />
+    <br />
+    Player 2<thullaClient playerID="2" />
+    <br />
+    Player 3<thullaClient playerID="3" />
+  </div>
+);
 class App extends Component {
   render() {
     return (
@@ -48,7 +69,7 @@ class App extends Component {
             <Route exact path="/login" component={Login} />
             <Switch>
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
-              {/* <PrivateRoute exact path="/game" component={thulla} /> */}
+              <PrivateRoute exact path="/game" component={gameRoute} />
               <PrivateRoute exact path="/profile" component={Profile} />
             </Switch>
           </div>

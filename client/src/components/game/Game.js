@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import Board from "./Board";
 import { Client } from "boardgame.io/react";
 import { Game } from "boardgame.io/core";
 
@@ -113,7 +113,7 @@ export const Thulla = Game({
 
   moves: {
     fillDeck(G, ctx) {
-      for (i = 0; i < 52; ++i) {
+      for (let i = 0; i < 52; ++i) {
         G.deck[i][0] = cards[i];
       }
     },
@@ -130,7 +130,7 @@ export const Thulla = Game({
     },
     setTurn(G, ctx) {
       if (G.move === 0) {
-        for (i = 0; i < 52; ++i) {
+        for (let i = 0; i < 52; ++i) {
           if (G.deck[i][0] == "SA") {
             ctx.currentPlayer = G.deck[i][1];
             G.deck[i][0] = null;
@@ -145,12 +145,4 @@ export const Thulla = Game({
     },
     playCard(G, ctx) {}
   }
-});
-
-export const client = Client({
-  game: Thulla,
-  numPlayers: 4,
-  board: Board,
-  multiplayer: { local: true },
-  debug: true
 });
