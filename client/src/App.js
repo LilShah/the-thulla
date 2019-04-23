@@ -39,7 +39,7 @@ if (localStorage.jwtToken) {
     window.location.href = "./login";
   }
 }
-export const thullaClient = Client({
+export const ThullaClient = Client({
   game: Thulla,
   numPlayers: 4,
   board: Board,
@@ -48,13 +48,13 @@ export const thullaClient = Client({
 });
 const gameRoute = () => (
   <div>
-    Player 0<thullaClient playerID="0" />
+    Player 0<ThullaClient playerID="0" />
     <br />
-    Player 1<thullaClient playerID="1" />
+    Player 1<ThullaClient playerID="1" />
     <br />
-    Player 2<thullaClient playerID="2" />
+    Player 2<ThullaClient playerID="2" />
     <br />
-    Player 3<thullaClient playerID="3" />
+    Player 3<ThullaClient playerID="3" />
   </div>
 );
 class App extends Component {
