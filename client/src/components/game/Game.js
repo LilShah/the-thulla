@@ -112,7 +112,7 @@ export const Thulla = Game({
   }),
 
   moves: {
-    fillDeck(G, ctx) {
+    fillDeck(G) {
       for (let i = 0; i < 52; ++i) {
         G.deck[i][0] = cards[i];
       }

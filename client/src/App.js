@@ -47,7 +47,7 @@ export const ThullaClient = Client({
   debug: true
 });
 const gameRoute = () => (
-  <div>
+  <div class="list">
     Player 0<ThullaClient playerID="0" />
     <br />
     Player 1<ThullaClient playerID="1" />
