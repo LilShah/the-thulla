@@ -1,14 +1,14 @@
 {
-  "name": "mern-auth",
+  "name": "Thulla",
   "version": "1.0.0",
-  "description": "Mern Auth Example",
+  "description": "Thulla card game",
   "main": "server.js",
   "scripts": {
     "client-install": "npm install --prefix client",
     "start": "node server.js",
     "server": "nodemon server.js",
     "client": "npm start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\" \"node -r esm client/src/components/game/gameServer.js\""
   },
   "author": "",
   "license": "MIT",
@@ -17,6 +17,7 @@
     "boardgame.io": "^0.31.4",
     "body-parser": "^1.18.3",
     "concurrently": "^4.0.1",
+    "esm": "^3.2.22",
     "express": "^4.16.4",
     "is-empty": "^1.2.0",
     "jsonwebtoken": "^8.3.0",

@@ -112,20 +112,26 @@ export const Thulla = Game({
   }),
 
   moves: {
-    fillDeck(G) {
+    deal(G) {
+      let ctr = 52;
+      let temp;
+      let index;
+
+      while (ctr > 0) {
+        index = Math.floor(Math.random() * ctr);
+        ctr--;
+        temp = cards[ctr];
+        console.log("Array: " + temp);
+        cards[ctr] = cards[index];
+        cards[index] = temp;
+      }
+      let j = 0;
       for (let i = 0; i < 52; ++i) {
         G.deck[i][0] = cards[i];
-      }
-    },
-    shuffle(G, ctx) {
-      G.deck = ctx.random.shuffle(G.deck);
-    },
-    drawCard(G, id) {
-      if (G.deckIndex < 53) {
-        if (G.deck[G.deckIndex][1] === null) {
-          G.deck[G.deckIndex][1] = id;
+        G.deck[i][1] = j;
+        if ((i + 1) % 13 === 0) {
+          j++;
         }
-        G.deckIndex++;
       }
     },
     setTurn(G, ctx) {

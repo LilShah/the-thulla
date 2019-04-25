@@ -11,11 +11,8 @@ class Board extends Component {
     isMultiplayer: PropTypes.bool
   };
 
-  fillDeck = () => {
-    this.props.moves.fillDeck();
-  };
-  shuffle = () => {
-    this.props.moves.shuffle();
+  deal = () => {
+    this.props.moves.deal();
   };
   render() {
     return (
@@ -27,22 +24,10 @@ class Board extends Component {
             letterSpacing: "1.5px",
             marginTop: "1rem"
           }}
-          onClick={this.fillDeck}
+          onClick={this.deal}
           className="btn btn-large waves-effect waves-light hoverable blue accent-3"
         >
-          Fill Deck
-        </button>
-        <button
-          style={{
-            width: "150px",
-            borderRadius: "3px",
-            letterSpacing: "1.5px",
-            marginTop: "1rem"
-          }}
-          onClick={this.fillDeck}
-          className="btn btn-large waves-effect waves-light hoverable blue accent-3"
-        >
-          shuffle
+          Start
         </button>
       </div>
     );

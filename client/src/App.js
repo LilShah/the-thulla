@@ -8,17 +8,15 @@ import { Provider } from "react-redux";
 import store from "./store";
 import "./App.css";
 
-import { Client } from "boardgame.io/react";
-
 import Navbar from "./components/layout/Navbar";
 import Landing from "./components/layout/Landing";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import PrivateRoute from "./components/private-route/PrivateRoute";
 import Dashboard from "./components/dashboard/Dashboard";
-import { Thulla } from "./components/game/Game";
-import Board from "./components/game/Board";
 import Profile from "./components/game/Profile";
+
+import ThullaClient from "./components/game/ThullaClient";
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -39,15 +37,9 @@ if (localStorage.jwtToken) {
     window.location.href = "./login";
   }
 }
-export const ThullaClient = Client({
-  game: Thulla,
-  numPlayers: 4,
-  board: Board,
-  multiplayer: { local: true },
-  debug: true
-});
+
 const gameRoute = () => (
-  <div class="list">
+  <div className="list">
     Player 0<ThullaClient playerID="0" />
     <br />
     Player 1<ThullaClient playerID="1" />
