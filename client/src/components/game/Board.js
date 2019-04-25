@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+
 class Board extends Component {
   static propTypes = {
     G: PropTypes.any.isRequired,
@@ -9,105 +10,40 @@ class Board extends Component {
     isActive: PropTypes.bool,
     isMultiplayer: PropTypes.bool
   };
+
+  fillDeck = () => {
+    this.props.moves.fillDeck();
+  };
+  shuffle = () => {
+    this.props.moves.shuffle();
+  };
   render() {
     return (
-      <div id="gameRender">
-        <div class="enclosureTop">
-          <div class="top">
-            {/* <img class="cards" src="/cards/default/RED_BACK.svg" /> */}
-            <img class="cards" src="/cards/default/RED_BACK.svg" />
-            {/* <img class="cards" src="/cards/default/RED_BACK.svg" /> */}
-            <img class="cards" src="/cards/default/RED_BACK.svg" />
-            <img class="cards" src="/cards/default/RED_BACK.svg" />
-            {/* <img class="cards" src="/cards/default/RED_BACK.svg" /> */}
-            <img class="cards" src="/cards/default/RED_BACK.svg" />
-            <img class="cards" src="/cards/default/RED_BACK.svg" />
-            {/* <img class="cards" src="/cards/default/RED_BACK.svg" /> */}
-            <img class="cards" src="/cards/default/RED_BACK.svg" />
-            <img class="cards" src="/cards/default/RED_BACK.svg" />
-            {/* <img class="cards" src="/cards/default/RED_BACK.svg" /> */}
-            <img class="cards" src="/cards/default/RED_BACK.svg" />
-          </div>
-        </div>
-
-        <div class="enclosureLeft">
-          <div class="left">
-            {/* <img class="cardsVert" src="/cards/default/RED_BACK.svg" /> */}
-            <img class="cardsVert" src="/cards/default/RED_BACK.svg" />
-            {/* <img class="cardsVert" src="/cards/default/RED_BACK.svg" /> */}
-            <img class="cardsVert" src="/cards/default/RED_BACK.svg" />
-            <img class="cardsVert" src="/cards/default/RED_BACK.svg" />
-            {/* <img class="cardsVert" src="/cards/default/RED_BACK.svg" /> */}
-            <img class="cardsVert" src="/cards/default/RED_BACK.svg" />
-            <img class="cardsVert" src="/cards/default/RED_BACK.svg" />
-            {/* <img class="cardsVert" src="/cards/default/RED_BACK.svg" /> */}
-            <img class="cardsVert" src="/cards/default/RED_BACK.svg" />
-            <img class="cardsVert" src="/cards/default/RED_BACK.svg" />
-            {/* <img class="cardsVert" src="/cards/default/RED_BACK.svg" /> */}
-            <img class="cardsVert" src="/cards/default/RED_BACK.svg" />
-          </div>
-        </div>
-
-        <div class="enclosureRight">
-          <div class="right">
-            {/* <img class="cardsVert" src="/cards/default/RED_BACK.svg" /> */}
-            <img class="cardsVert" src="/cards/default/RED_BACK.svg" />
-            {/* <img class="cardsVert" src="/cards/default/RED_BACK.svg" /> */}
-            <img class="cardsVert" src="/cards/default/RED_BACK.svg" />
-            <img class="cardsVert" src="/cards/default/RED_BACK.svg" />
-            {/* <img class="cardsVert" src="/cards/default/RED_BACK.svg" /> */}
-            <img class="cardsVert" src="/cards/default/RED_BACK.svg" />
-            <img class="cardsVert" src="/cards/default/RED_BACK.svg" />
-            {/* <img class="cardsVert" src="/cards/default/RED_BACK.svg" /> */}
-            <img class="cardsVert" src="/cards/default/RED_BACK.svg" />
-            <img class="cardsVert" src="/cards/default/RED_BACK.svg" />
-            {/* <img class="cardsVert" src="/cards/default/RED_BACK.svg" /> */}
-            <img class="cardsVert" src="/cards/default/RED_BACK.svg" />
-          </div>
-        </div>
-
-        <div class="enclosureBottom">
-          <div class="bottom">
-            {/* <img class="cards" src="/cards/default/SQ.svg" /> */}
-            <img class="cards" src="/cards/default/S8.svg" />
-            {/* <img class="cards" src="/cards/default/S5.svg" /> */}
-            <img class="cards" src="/cards/default/C8.svg" />
-            <img class="cards" src="/cards/default/DA.svg" />
-            {/* <img class="cards" src="/cards/default/DK.svg" /> */}
-            <img class="cards" src="/cards/default/DJ.svg" />
-            <img class="cards" src="/cards/default/D9.svg" />
-            {/* <img class="cards" src="/cards/default/D8.svg" /> */}
-            <img class="cards" src="/cards/default/HA.svg" />
-            <img class="cards" src="/cards/default/H10.svg" />
-            {/* <img class="cards" src="/cards/default/H9.svg" /> */}
-            <img class="cards" src="/cards/default/H5.svg" />
-          </div>
-        </div>
-
-        <div class="topMid">
-          <img class="cards" src="/cards/default/SA.svg" />
-        </div>
-        <div class="rightMid">
-          <img class="cards" src="/cards/default/S10.svg" />
-        </div>
-        <div class="bottomMid">
-          <img class="cards" src="/cards/default/SQ.svg" />
-        </div>
-        <div class="leftMid">
-          <img class="cards" src="/cards/default/S6.svg" />
-        </div>
-        <div class="player0">
-          {"\n"}TigerDrifter{"\n\n"} Cards: 8
-        </div>
-        <div class="player1">
-          {"\n"}LilShah{"\n\n"}Cards: 8
-        </div>
-        <div class="player2">
-          {"\n"}SAN302{"\n\n"}Cards: 8
-        </div>
-        <div class="player3">
-          {"\n"}Ashir14{"\n\n"}Cards: 8
-        </div>
+      <div id="board">
+        <button
+          style={{
+            width: "150px",
+            borderRadius: "3px",
+            letterSpacing: "1.5px",
+            marginTop: "1rem"
+          }}
+          onClick={this.fillDeck}
+          className="btn btn-large waves-effect waves-light hoverable blue accent-3"
+        >
+          Fill Deck
+        </button>
+        <button
+          style={{
+            width: "150px",
+            borderRadius: "3px",
+            letterSpacing: "1.5px",
+            marginTop: "1rem"
+          }}
+          onClick={this.fillDeck}
+          className="btn btn-large waves-effect waves-light hoverable blue accent-3"
+        >
+          shuffle
+        </button>
       </div>
     );
   }
