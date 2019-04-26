@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Board from "./Board";
 import { Client } from "boardgame.io/react";
 import { Game } from "boardgame.io/core";
+import { get } from "https";
 
 const cards = [
   "CA",
@@ -108,7 +109,12 @@ export const Thulla = Game({
     deckIndex: 0,
     table: Array(4).fill(null),
     tableIndex: 0,
-    turn: 0
+    turn: 0,
+    p0Cards: [...Array(13)].fill(null).map(e => Array(null).fill(0)),
+    p1Cards: [...Array(13)].fill(null).map(e => Array(null).fill(0)),
+    p2Cards: [...Array(13)].fill(null).map(e => Array(null).fill(0)),
+    p3Cards: [...Array(13)].fill(null).map(e => Array(null).fill(0)),
+    pSize: Array(4).fill(12)
   }),
 
   moves: {
@@ -133,6 +139,16 @@ export const Thulla = Game({
           j++;
         }
       }
+      for (let j = 0; j < 13; ++j) {
+        G.p0Cards[j][0] = getSuit(G.deck[j][0]);
+        G.p0Cards[j][1] = getDegree(G.deck[j][0]);
+        G.p1Cards[j][0] = getSuit(G.deck[j * 2][0]);
+        G.p1Cards[j][1] = getDegree(G.deck[j * 2][0]);
+        G.p2Cards[j][0] = getSuit(G.deck[j * 3][0]);
+        G.p2Cards[j][1] = getDegree(G.deck[j * 3][0]);
+        G.p3Cards[j][0] = getSuit(G.deck[j * 4][0]);
+        G.p3Cards[j][1] = getDegree(G.deck[j * 4][0]);
+      }
     },
     setTurn(G, ctx) {
       if (G.move === 0) {
@@ -149,6 +165,40 @@ export const Thulla = Game({
       if (G.tableIndex === 0) {
       }
     },
-    playCard(G, ctx) {}
+    valid(G, card, playerID) {
+      if (G.tableIndex === 0) return true;
+      else {
+        for (let i = G.pSize[playerID].length; i >= 0; ++i) {
+          if (playerID === 0) {
+            if (G.p0Cards[i][0] === getSuit(G.table[G.tableIndex])) {
+              return false;
+            }
+          } else if (playerID === 1) {
+            if (G.p1Cards[i][0] === getSuit(G.table[G.tableIndex])) {
+              return false;
+            }
+          } else if (playerID === 2) {
+            if (G.p2Cards[i][0] === getSuit(G.table[G.tableIndex])) {
+              return false;
+            }
+          } else if (playerID === 3) {
+            if (G.p3Cards[i][0] === getSuit(G.table[G.tableIndex])) {
+              return false;
+            }
+          }
+        }
+      }
+      return true;
+    }
+  },
+  playCard(G, ctx, id, card) {
+    let a = Array(2).fill(null);
+    a[0] = getSuit(card);
+    a[1] = getDegree(card);
+    if (this.valid(card, id)) {
+      let a = G.table;
+      G.tableIndex++;
+      if (G.tableIndex > 3) G.tableIndex = 0;
+    }
   }
 });
