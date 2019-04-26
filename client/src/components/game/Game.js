@@ -107,14 +107,14 @@ export const Thulla = Game({
   setup: () => ({
     deck: [...Array(52)].map(e => Array(2)),
     deckIndex: 0,
-    table: Array(4).fill(null),
+    table: [...Array(4)].fill(null).map(e => Array(null).fill(null)),
     tableIndex: 0,
     turn: 0,
     p0Cards: [...Array(13)].fill(null).map(e => Array(null).fill(0)),
     p1Cards: [...Array(13)].fill(null).map(e => Array(null).fill(0)),
     p2Cards: [...Array(13)].fill(null).map(e => Array(null).fill(0)),
     p3Cards: [...Array(13)].fill(null).map(e => Array(null).fill(0)),
-    pSize: Array(4).fill(12)
+    deckSize: Array(4).fill(12)
   }),
 
   moves: {
@@ -149,6 +149,7 @@ export const Thulla = Game({
         G.p3Cards[j][0] = getSuit(G.deck[j * 4][0]);
         G.p3Cards[j][1] = getDegree(G.deck[j * 4][0]);
       }
+      G.deck = null;
     },
     setTurn(G, ctx) {
       if (G.move === 0) {
@@ -165,10 +166,24 @@ export const Thulla = Game({
       if (G.tableIndex === 0) {
       }
     },
-    valid(G, card, playerID) {
+    sortHand(G) {
+      G.p0Cards.sort(function(a, b) {
+        return a[0] - b[0];
+      });
+      G.p1Cards.sort(function(a, b) {
+        return a[0] - b[0];
+      });
+      G.p2Cards.sort(function(a, b) {
+        return a[0] - b[0];
+      });
+      G.p3Cards.sort(function(a, b) {
+        return a[0] - b[0];
+      });
+    },
+    valid(G, playerID) {
       if (G.tableIndex === 0) return true;
       else {
-        for (let i = G.pSize[playerID].length; i >= 0; ++i) {
+        for (let i = G.deckSize[playerID].length; i >= 0; ++i) {
           if (playerID === 0) {
             if (G.p0Cards[i][0] === getSuit(G.table[G.tableIndex])) {
               return false;
@@ -191,14 +206,34 @@ export const Thulla = Game({
       return true;
     }
   },
+  thullaa(G) {
+    if (G.tableIndex == 0) return false;
+    else if (G.table[G.tableIndex][0] === G.table[G.tableIndex - 1][0])
+      return false;
+    else return true;
+  },
   playCard(G, ctx, id, card) {
     let a = Array(2).fill(null);
     a[0] = getSuit(card);
     a[1] = getDegree(card);
-    if (this.valid(card, id)) {
-      let a = G.table;
+    if (this.valid(id)) {
+      G.table.push(a);
       G.tableIndex++;
       if (G.tableIndex > 3) G.tableIndex = 0;
+      if (G.thullaa()) {
+        if (id == 0) {
+          for (let i = 0; i < G.tableIndex; ++i) G.p0Cards.push(G.table[i]);
+        }
+        if (id == 1) {
+          for (let i = 0; i < G.tableIndex; ++i) G.p1Cards.push(G.table[i]);
+        }
+        if (id == 2) {
+          for (let i = 0; i < G.tableIndex; ++i) G.p2Cards.push(G.table[i]);
+        }
+        if (id == 3) {
+          for (let i = 0; i < G.tableIndex; ++i) G.p3Cards.push(G.table[i]);
+        }
+      }
     }
   }
 });
