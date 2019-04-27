@@ -168,6 +168,18 @@ export const Thulla = Game({
     },
     sortHand(G) {
       G.p0Cards.sort(function(a, b) {
+        return a[1] - b[1];
+      });
+      G.p1Cards.sort(function(a, b) {
+        return a[1] - b[1];
+      });
+      G.p2Cards.sort(function(a, b) {
+        return a[1] - b[1];
+      });
+      G.p3Cards.sort(function(a, b) {
+        return a[1] - b[1];
+      });
+      G.p0Cards.sort(function(a, b) {
         return a[0] - b[0];
       });
       G.p1Cards.sort(function(a, b) {
@@ -233,6 +245,7 @@ export const Thulla = Game({
         if (id == 3) {
           for (let i = 0; i < G.tableIndex; ++i) G.p3Cards.push(G.table[i]);
         }
+        G.sortHand();
       }
     }
   }
