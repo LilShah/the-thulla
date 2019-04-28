@@ -261,43 +261,51 @@ export const Thulla = Game({
         //needs fix
 
         if (id == 0) {
-          for (let i = 0; i < G.tableIndex; ++i) G.p0Cards.push(G.table[i]);
+          for (let i = 0; i < G.tableIndex; ++i) {
+            G.p0Cards.push(G.table[i]);
+          }
+          G.p0Cards.sort(function(a, b) {
+            return a[1] - b[1];
+          });
+          G.p0Cards.sort(function(a, b) {
+            return a[0] - b[0];
+          });
         }
         if (id == 1) {
-          for (let i = 0; i < G.tableIndex; ++i) G.p1Cards.push(G.table[i]);
+          for (let i = 0; i < G.tableIndex; ++i) {
+            G.p1Cards.push(G.table[i]);
+          }
+          G.p1Cards.sort(function(a, b) {
+            return a[1] - b[1];
+          });
+          G.p1Cards.sort(function(a, b) {
+            return a[0] - b[0];
+          });
         }
         if (id == 2) {
-          for (let i = 0; i < G.tableIndex; ++i) G.p2Cards.push(G.table[i]);
+          for (let i = 0; i < G.tableIndex; ++i) {
+            G.p2Cards.push(G.table[i]);
+          }
+          G.p2Cards.sort(function(a, b) {
+            return a[1] - b[1];
+          });
+          G.p2Cards.sort(function(a, b) {
+            return a[0] - b[0];
+          });
         }
         if (id == 3) {
-          for (let i = 0; i < G.tableIndex; ++i) G.p3Cards.push(G.table[i]);
+          for (let i = 0; i < G.tableIndex; ++i) {
+            G.p3Cards.push(G.table[i]);
+          }
+          G.p3Cards.sort(function(a, b) {
+            return a[1] - b[1];
+          });
+          G.p3Cards.sort(function(a, b) {
+            return a[0] - b[0];
+          });
         }
 
         //needs fix^
-        G.p0Cards.sort(function(a, b) {
-          return a[1] - b[1];
-        });
-        G.p1Cards.sort(function(a, b) {
-          return a[1] - b[1];
-        });
-        G.p2Cards.sort(function(a, b) {
-          return a[1] - b[1];
-        });
-        G.p3Cards.sort(function(a, b) {
-          return a[1] - b[1];
-        });
-        G.p0Cards.sort(function(a, b) {
-          return a[0] - b[0];
-        });
-        G.p1Cards.sort(function(a, b) {
-          return a[0] - b[0];
-        });
-        G.p2Cards.sort(function(a, b) {
-          return a[0] - b[0];
-        });
-        G.p3Cards.sort(function(a, b) {
-          return a[0] - b[0];
-        });
       }
     }
   }
