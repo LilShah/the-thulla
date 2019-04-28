@@ -118,6 +118,32 @@ export const Thulla = Game({
   }),
 
   moves: {
+    sortHand(G) {
+      G.p0Cards.sort(function(a, b) {
+        return a[1] - b[1];
+      });
+      G.p1Cards.sort(function(a, b) {
+        return a[1] - b[1];
+      });
+      G.p2Cards.sort(function(a, b) {
+        return a[1] - b[1];
+      });
+      G.p3Cards.sort(function(a, b) {
+        return a[1] - b[1];
+      });
+      G.p0Cards.sort(function(a, b) {
+        return a[0] - b[0];
+      });
+      G.p1Cards.sort(function(a, b) {
+        return a[0] - b[0];
+      });
+      G.p2Cards.sort(function(a, b) {
+        return a[0] - b[0];
+      });
+      G.p3Cards.sort(function(a, b) {
+        return a[0] - b[0];
+      });
+    },
     deal(G) {
       let ctr = 52;
       let temp;
@@ -150,6 +176,30 @@ export const Thulla = Game({
         G.p3Cards[j][1] = getDegree(G.deck[j * 4][0]);
       }
       G.deck = null;
+      G.p0Cards.sort(function(a, b) {
+        return a[1] - b[1];
+      });
+      G.p1Cards.sort(function(a, b) {
+        return a[1] - b[1];
+      });
+      G.p2Cards.sort(function(a, b) {
+        return a[1] - b[1];
+      });
+      G.p3Cards.sort(function(a, b) {
+        return a[1] - b[1];
+      });
+      G.p0Cards.sort(function(a, b) {
+        return a[0] - b[0];
+      });
+      G.p1Cards.sort(function(a, b) {
+        return a[0] - b[0];
+      });
+      G.p2Cards.sort(function(a, b) {
+        return a[0] - b[0];
+      });
+      G.p3Cards.sort(function(a, b) {
+        return a[0] - b[0];
+      });
     },
     setTurn(G, ctx) {
       if (G.move === 0) {
@@ -166,32 +216,7 @@ export const Thulla = Game({
       if (G.tableIndex === 0) {
       }
     },
-    sortHand(G) {
-      G.p0Cards.sort(function(a, b) {
-        return a[1] - b[1];
-      });
-      G.p1Cards.sort(function(a, b) {
-        return a[1] - b[1];
-      });
-      G.p2Cards.sort(function(a, b) {
-        return a[1] - b[1];
-      });
-      G.p3Cards.sort(function(a, b) {
-        return a[1] - b[1];
-      });
-      G.p0Cards.sort(function(a, b) {
-        return a[0] - b[0];
-      });
-      G.p1Cards.sort(function(a, b) {
-        return a[0] - b[0];
-      });
-      G.p2Cards.sort(function(a, b) {
-        return a[0] - b[0];
-      });
-      G.p3Cards.sort(function(a, b) {
-        return a[0] - b[0];
-      });
-    },
+
     valid(G, playerID) {
       if (G.tableIndex === 0) return true;
       else {
@@ -233,6 +258,8 @@ export const Thulla = Game({
       G.tableIndex++;
       if (G.tableIndex > 3) G.tableIndex = 0;
       if (G.thullaa()) {
+        //needs fix
+
         if (id == 0) {
           for (let i = 0; i < G.tableIndex; ++i) G.p0Cards.push(G.table[i]);
         }
@@ -245,7 +272,32 @@ export const Thulla = Game({
         if (id == 3) {
           for (let i = 0; i < G.tableIndex; ++i) G.p3Cards.push(G.table[i]);
         }
-        G.sortHand();
+
+        //needs fix^
+        G.p0Cards.sort(function(a, b) {
+          return a[1] - b[1];
+        });
+        G.p1Cards.sort(function(a, b) {
+          return a[1] - b[1];
+        });
+        G.p2Cards.sort(function(a, b) {
+          return a[1] - b[1];
+        });
+        G.p3Cards.sort(function(a, b) {
+          return a[1] - b[1];
+        });
+        G.p0Cards.sort(function(a, b) {
+          return a[0] - b[0];
+        });
+        G.p1Cards.sort(function(a, b) {
+          return a[0] - b[0];
+        });
+        G.p2Cards.sort(function(a, b) {
+          return a[0] - b[0];
+        });
+        G.p3Cards.sort(function(a, b) {
+          return a[0] - b[0];
+        });
       }
     }
   }
