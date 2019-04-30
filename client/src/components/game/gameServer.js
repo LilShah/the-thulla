@@ -3,11 +3,8 @@ const Mongo = require("boardgame.io/server").Mongo;
 const Thulla = require("./Game").Thulla;
 
 const server = Server({
-  games: [Thulla],
-  db: new Mongo({
-    url:
-      "mongodb+srv://LilShah:lullimeri@thulladb-w9qjp.gcp.mongodb.net/test?retryWrites=true",
-    dbname: "gameState"
-  })
+  games: [Thulla]
 });
-server.run(4000);
+if (server.run(4000)) {
+  console.log("run");
+}

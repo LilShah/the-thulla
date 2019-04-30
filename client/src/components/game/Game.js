@@ -258,8 +258,8 @@ export const Thulla = Game({
       G.tableIndex++;
       if (G.tableIndex > 3) G.tableIndex = 0;
       if (G.thullaa()) {
-        //needs fix
-
+        //NEED TO FIX THE LOOP THAT GIVES THE CARDS FROM TABLE TO THULLA GUY
+        //CURRENTLY BEING GIVEN TO ONE WHO COMMENCED THE THULLA
         if (id == 0) {
           for (let i = 0; i < G.tableIndex; ++i) {
             G.p0Cards.push(G.table[i]);
@@ -304,8 +304,6 @@ export const Thulla = Game({
             return a[0] - b[0];
           });
         }
-
-        //needs fix^
       }
     }
   }
