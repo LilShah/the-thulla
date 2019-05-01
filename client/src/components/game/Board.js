@@ -25,7 +25,6 @@ class Board extends Component {
     this.props.moves.sortHand();
   };
   render() {
-    let started;
     return (
       <div id="board">
         <button

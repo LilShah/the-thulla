@@ -6,7 +6,7 @@ const ThullaClient = Client({
   game: Thulla,
   numPlayers: 4,
   board: Board,
-  multiplayer: { local: true },
+  multiplayer: true,
   debug: true
 });
 

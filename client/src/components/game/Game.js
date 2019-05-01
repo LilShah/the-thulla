@@ -1,8 +1,4 @@
-import React, { Component } from "react";
-import Board from "./Board";
-import { Client } from "boardgame.io/react";
 import { Game } from "boardgame.io/core";
-import { get } from "https";
 
 const cards = [
   "CA",
@@ -205,7 +201,7 @@ export const Thulla = Game({
     setTurn(G, ctx) {
       if (G.move === 0) {
         for (let i = 0; i < 52; ++i) {
-          if (G.deck[i][0] == "SA") {
+          if (G.deck[i][0] === "SA") {
             ctx.currentPlayer = G.deck[i][1];
             G.deck[i][0] = null;
             break;
@@ -266,7 +262,7 @@ export const Thulla = Game({
             b[2] = G.table[i][2];
           }
         }
-        if (b[3] == 0) {
+        if (b[3] === 0) {
           for (let i = 0; i < G.tableIndex; ++i) {
             G.p0Cards.push(G.table[i]);
           }
@@ -277,7 +273,7 @@ export const Thulla = Game({
             return a[0] - b[0];
           });
         }
-        if (b[3] == 1) {
+        if (b[3] === 1) {
           for (let i = 0; i < G.tableIndex; ++i) {
             G.p1Cards.push(G.table[i]);
           }
@@ -288,7 +284,7 @@ export const Thulla = Game({
             return a[0] - b[0];
           });
         }
-        if (b[3] == 2) {
+        if (b[3] === 2) {
           for (let i = 0; i < G.tableIndex; ++i) {
             G.p2Cards.push(G.table[i]);
           }
@@ -299,7 +295,7 @@ export const Thulla = Game({
             return a[0] - b[0];
           });
         }
-        if (b[3] == 3) {
+        if (b[3] === 3) {
           for (let i = 0; i < G.tableIndex; ++i) {
             G.p3Cards.push(G.table[i]);
           }
