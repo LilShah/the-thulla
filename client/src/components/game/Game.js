@@ -107,14 +107,15 @@ export const Thulla = Game({
   setup: () => ({
     deck: [...Array(52)].map(e => Array(2)),
     deckIndex: 0,
-    table: [...Array(4)].fill(null).map(e => Array(null).fill(null)),
+    table: [...Array(4)].fill(null).map(e => Array(3).fill(null)),
     tableIndex: 0,
     turn: 0,
-    p0Cards: [...Array(13)].fill(null).map(e => Array(null).fill(0)),
-    p1Cards: [...Array(13)].fill(null).map(e => Array(null).fill(0)),
-    p2Cards: [...Array(13)].fill(null).map(e => Array(null).fill(0)),
-    p3Cards: [...Array(13)].fill(null).map(e => Array(null).fill(0)),
-    deckSize: Array(4).fill(12)
+    p0Cards: [...Array(13)].fill(null).map(e => Array(2).fill(0)),
+    p1Cards: [...Array(13)].fill(null).map(e => Array(2).fill(0)),
+    p2Cards: [...Array(13)].fill(null).map(e => Array(2).fill(0)),
+    p3Cards: [...Array(13)].fill(null).map(e => Array(2).fill(0)),
+    deckSize: Array(4).fill(12),
+    moveSuit: null
   }),
 
   moves: {
@@ -175,7 +176,7 @@ export const Thulla = Game({
         G.p3Cards[j][0] = getSuit(G.deck[j * 4][0]);
         G.p3Cards[j][1] = getDegree(G.deck[j * 4][0]);
       }
-      G.deck = null;
+      //G.deck = null;
       G.p0Cards.sort(function(a, b) {
         return a[1] - b[1];
       });
@@ -243,24 +244,29 @@ export const Thulla = Game({
       return true;
     }
   },
-  thullaa(G) {
-    if (G.tableIndex == 0) return false;
-    else if (G.table[G.tableIndex][0] === G.table[G.tableIndex - 1][0])
-      return false;
-    else return true;
-  },
   playCard(G, ctx, id, card) {
-    let a = Array(2).fill(null);
+    let a = Array(3).fill(null);
     a[0] = getSuit(card);
     a[1] = getDegree(card);
+    a[2] = id;
     if (this.valid(id)) {
       G.table.push(a);
       G.tableIndex++;
       if (G.tableIndex > 3) G.tableIndex = 0;
-      if (G.thullaa()) {
+      if (G.moveSuit !== a[0]) {
         //NEED TO FIX THE LOOP THAT GIVES THE CARDS FROM TABLE TO THULLA GUY
         //CURRENTLY BEING GIVEN TO ONE WHO COMMENCED THE THULLA
-        if (id == 0) {
+        let b = Array(3).fill(null);
+        b[0] = G.moveSuit;
+        b[1] = -1;
+        b[2] = -1;
+        for (let i = 0; i < G.tableIndex; ++i) {
+          if (G.table[i][1] > b[1] && G.table[i][0] === G.moveSuit) {
+            b[1] = G.table[i][1];
+            b[2] = G.table[i][2];
+          }
+        }
+        if (b[3] == 0) {
           for (let i = 0; i < G.tableIndex; ++i) {
             G.p0Cards.push(G.table[i]);
           }
@@ -271,7 +277,7 @@ export const Thulla = Game({
             return a[0] - b[0];
           });
         }
-        if (id == 1) {
+        if (b[3] == 1) {
           for (let i = 0; i < G.tableIndex; ++i) {
             G.p1Cards.push(G.table[i]);
           }
@@ -282,7 +288,7 @@ export const Thulla = Game({
             return a[0] - b[0];
           });
         }
-        if (id == 2) {
+        if (b[3] == 2) {
           for (let i = 0; i < G.tableIndex; ++i) {
             G.p2Cards.push(G.table[i]);
           }
@@ -293,7 +299,7 @@ export const Thulla = Game({
             return a[0] - b[0];
           });
         }
-        if (id == 3) {
+        if (b[3] == 3) {
           for (let i = 0; i < G.tableIndex; ++i) {
             G.p3Cards.push(G.table[i]);
           }
