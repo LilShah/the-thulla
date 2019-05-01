@@ -5,6 +5,4 @@ const Thulla = require("./Game").Thulla;
 const server = Server({
   games: [Thulla]
 });
-if (server.run(4000)) {
-  console.log("run");
-}
+server.run(8000);
