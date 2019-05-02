@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 class Profile extends Component {
   constructor() {
@@ -23,7 +24,7 @@ class Profile extends Component {
 
   componentDidMount() {
     axios
-      .get("api/users")
+      .get("api/get-data")
       .then(response => {
         this.setState({
           name: response.name,
@@ -48,8 +49,8 @@ class Profile extends Component {
               <b>Hey there,</b> {user.name}
               <b>Hey there,</b> {this.state.email}
               <p className="flow-text grey-text text-darken-1">
-                You are logged into a full-stack{" "}
-                <span style={{ fontFamily: "monospace" }}>MERN</span> app 👏
+                You are logged into{" "}
+                <span style={{ fontFamily: "monospace" }}>Thulla</span> 👏
               </p>
             </h4>
             <button
@@ -64,6 +65,18 @@ class Profile extends Component {
             >
               Logout
             </button>
+            <Link
+              to="/dashboard"
+              style={{
+                width: "140px",
+                borderRadius: "3px",
+                letterSpacing: "1.5px",
+                margin: "1rem"
+              }}
+              className="btn btn-large waves-effect waves-light hoverable blue accent-3"
+            >
+              Back
+            </Link>
           </div>
         </div>
       </div>

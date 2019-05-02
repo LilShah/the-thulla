@@ -1,42 +1,48 @@
-# mern-auth
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-![Final App](https://i.postimg.cc/tybZb8dL/final-MERNAuth.gif)
-Minimal full-stack MERN app with authentication using passport and JWTs.
+## THIS PROJECT DEPENDS ON A REMOTE MONGO DB CONNECTION WHICH REFUSES TO CONNECT ON FAST-NU'S INTERNET
 
-This project uses the following technologies:
+## How to run
 
-- [React](https://reactjs.org) and [React Router](https://reacttraining.com/react-router/) for frontend
-- [Express](http://expressjs.com/) and [Node](https://nodejs.org/en/) for the backend
-- [MongoDB](https://www.mongodb.com/) for the database
-- [Redux](https://redux.js.org/basics/usagewithreact) for state management between React components
+REQUIRES [NODE.JS](https://nodejs.org/en/download/)
+Clone the Repo
 
-## Medium Series
+Run the following commands in the project directory:
 
-- [Build a Login/Auth App with the MERN Stack — Part 1 (Backend)](https://blog.bitsrc.io/build-a-login-auth-app-with-mern-stack-part-1-c405048e3669)
-- [Build a Login/Auth App with the MERN Stack — Part 2 (Frontend & Redux Setup)](https://blog.bitsrc.io/build-a-login-auth-app-with-mern-stack-part-2-frontend-6eac4e38ee82)
-- [Build a Login/Auth App with the MERN Stack — Part 3 (Linking Redux with React Components)](https://blog.bitsrc.io/build-a-login-auth-app-with-the-mern-stack-part-3-react-components-88190f8db718)
+`npm i --save`
 
-## Configuration
+`cd client`
 
-Make sure to add your own `MONGOURI` from your [mLab](http://mlab.com) database in `config/keys.js`.
+`npm i --save`
 
-```javascript
-module.exports = {
-  mongoURI: "YOUR_MONGO_URI_HERE",
-  secretOrKey: "secret"
-};
-```
+`cd ..`
 
-## Quick Start
+`npm i -g nodemon -d`
 
-```javascript
-// Install dependencies for server & client
-npm install && npm run client-install
+`npm run dev`
 
-// Run client & server with concurrently
-npm run dev
+These will install the necessary dependencies<br>
 
-// Server runs on http://localhost:5000 and client on http://localhost:3000
-```
+Afterwards install the following browser extension:<br>
+[Chrome](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd)<br>
+[Firefox](https://addons.mozilla.org/en-US/firefox/addon/reduxdevtools/)
 
-For deploying to Heroku, please refer to [this](https://www.youtube.com/watch?v=71wSzpLyW9k) helpful video by TraversyMedia.
+## Available Scripts
+
+In the project directory, you can run:
+
+### `npm run dev`
+
+Runs the app in the development mode.<br>
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+The page will reload if you make edits.<br>
+You will also see any lint errors in the console.
+
+Also will run the backend server on port 5000
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
