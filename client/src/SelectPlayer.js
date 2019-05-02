@@ -13,6 +13,7 @@ class SelectPlayer extends Component {
               width: "150px",
               borderRadius: "3px",
               letterSpacing: "1.5px",
+              marginLeft: "1rem",
               marginTop: "1rem"
             }}
             onClick={() => this.setState({ playerID: "0" })}
@@ -25,6 +26,7 @@ class SelectPlayer extends Component {
               width: "150px",
               borderRadius: "3px",
               letterSpacing: "1.5px",
+              marginLeft: "1rem",
               marginTop: "1rem"
             }}
             onClick={() => this.setState({ playerID: "1zs" })}
@@ -37,6 +39,7 @@ class SelectPlayer extends Component {
               width: "150px",
               borderRadius: "3px",
               letterSpacing: "1.5px",
+              marginLeft: "1rem",
               marginTop: "1rem"
             }}
             onClick={() => this.setState({ playerID: "2" })}
@@ -49,6 +52,7 @@ class SelectPlayer extends Component {
               width: "150px",
               borderRadius: "3px",
               letterSpacing: "1.5px",
+              marginLeft: "1rem",
               marginTop: "1rem"
             }}
             onClick={() => this.setState({ playerID: "3" })}
