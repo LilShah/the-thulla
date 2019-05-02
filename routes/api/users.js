@@ -109,14 +109,15 @@ router.post("/login", (req, res) => {
 var mongo = require('mongodb');
 var assert = require('assert');
 var url = "https://cloud.mongodb.com/v2/5cb57265014b76984e09f62f#clusters/detail/ThullaDB";
+console.log("Hello");
 
-router.get('/get-data',function(req,res,next)
+router.route("/get/:id").get(function(req,res,next)
 {
   var resultArray = [];
   mongo.connect(url,function(err,db)
   {
     assert.equal(null,err);
-    var cursor = db.collection('test.user').find();
+    var cursor = db.collection('test/user').find();
     cursor.forEach(function(doc,err){
       assert.equal(null,err);
       resultArray.push(doc);
