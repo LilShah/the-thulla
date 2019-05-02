@@ -8,8 +8,7 @@ class Board extends Component {
     this.onClick = this.onClick.bind(this);
     this.state = {
       started: false,
-      arr: null,
-      card: null
+      arr: null
     };
   }
 
@@ -21,6 +20,9 @@ class Board extends Component {
     isActive: PropTypes.bool,
     isMultiplayer: PropTypes.bool
   };
+  playCard = (a, b) => {
+    this.props.moves.playCard(a, b);
+  };
 
   boardSet = () => {};
   deal = () => {
@@ -30,15 +32,20 @@ class Board extends Component {
     if (this.state.started) {
       for (var i = 0; i < 13; ++i) {
         var imgsrc = "/cards/default/" + this.props.G.deck[i][0] + ".svg";
-        let newElement = <img src={imgsrc} />;
+        let newElement = (
+          <img
+            src={imgsrc}
+            onClick={this.playCard(
+              this.props.G.playerID,
+              this.props.G.deck[i][0]
+            )}
+          />
+        );
         cards.push(newElement);
       }
       //game = <div className="cards">a</div>;
     }
     return <tbody>{cards}</tbody>;
-  };
-  playCard = () => {
-    this.props.moves.playCard(0, this.state.card);
   };
 
   onClick() {
