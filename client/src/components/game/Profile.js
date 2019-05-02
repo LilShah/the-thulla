@@ -56,23 +56,23 @@ class Profile extends Component {
                 <span style={{ fontFamily: "monospace" }}></span>
               </p>
               <p className="flow-text grey-text text-darken-1 col s8">
-                xp:{user.xp}
+                xp: 0
                 <span style={{ fontFamily: "monospace" }}></span>
               </p>
               <p className="flow-text grey-text text-darken-1 col s8">
-                level:{user.level}
+                level: 1
                 <span style={{ fontFamily: "monospace" }}></span>
               </p>
               <p className="flow-text grey-text text-darken-1 col s8">
-                played:{user.played}
+                played:0
                 <span style={{ fontFamily: "monospace" }}></span>
               </p>
               <p className="flow-text grey-text text-darken-1 col s8">
-                wins:{user.wins}
+                wins:0
                 <span style={{ fontFamily: "monospace" }}></span>
               </p>
               <p className="flow-text grey-text text-darken-1 col s8">
-                losses:{user.losses}
+                losses:0
                 <span style={{ fontFamily: "monospace" }}></span>
               </p>  
             </h4>
