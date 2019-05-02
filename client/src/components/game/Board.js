@@ -5,13 +5,11 @@ import index from "./index.css"
 class Board extends Component {
   constructor(props) {
     super(props);
-    this.onClick=this.onClick.bind(this)
+    this.onClick = this.onClick.bind(this);
     this.state = {
       started: false,
       arr: null
     };
-    
-
   }
 
   static propTypes = {
@@ -44,8 +42,8 @@ class Board extends Component {
     this.props.moves.playCard(0, "CJ");
   };
 
-  onClick(){
-    this.state.arr=this.deal();
+  onClick() {
+    this.state.arr = this.deal();
   }
 
   render() {
