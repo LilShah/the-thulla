@@ -150,7 +150,6 @@ export const Thulla = Game({
         index = Math.floor(Math.random() * ctr);
         ctr--;
         temp = cards[ctr];
-        console.log("Array: " + temp);
         cards[ctr] = cards[index];
         cards[index] = temp;
       }
@@ -214,97 +213,123 @@ export const Thulla = Game({
       }
     },
 
-    valid(G, playerID) {
-      if (G.tableIndex === 0) return true;
-      else {
-        for (let i = G.deckSize[playerID].length; i >= 0; ++i) {
-          if (playerID === 0) {
-            if (G.p0Cards[i][0] === getSuit(G.table[G.tableIndex])) {
-              return false;
+    playCard(G, ctx, id, card) {
+      let a = Array(3).fill(null);
+      a[0] = getSuit(card);
+      a[1] = getDegree(card);
+      a[2] = id;
+      if (
+        () => {
+          if (G.tableIndex === 0) return true;
+          else {
+            for (let i = G.deckSize[id].length; i >= 0; ++i) {
+              if (id === 0) {
+                if (G.p0Cards[i][0] === getSuit(G.table[G.tableIndex])) {
+                  return false;
+                }
+              } else if (id === 1) {
+                if (G.p1Cards[i][0] === getSuit(G.table[G.tableIndex])) {
+                  return false;
+                }
+              } else if (id === 2) {
+                if (G.p2Cards[i][0] === getSuit(G.table[G.tableIndex])) {
+                  return false;
+                }
+              } else if (id === 3) {
+                if (G.p3Cards[i][0] === getSuit(G.table[G.tableIndex])) {
+                  return false;
+                }
+              }
             }
-          } else if (playerID === 1) {
-            if (G.p1Cards[i][0] === getSuit(G.table[G.tableIndex])) {
-              return false;
+          }
+          return true;
+        }
+      ) {
+        for (let i = 0; i < 3; ++i) {
+          G.table[G.tableIndex][i] = a[i];
+        }
+        G.tableIndex = G.tableIndex + 1;
+        if (id === 0) {
+          let b = Array(2).fill(null);
+          b[0] = a[0];
+          b[1] = a[1];
+          let index = G.p0Cards.indexOf(b);
+          if (index > -1) G.p0Cards.splice(index, 1);
+        } else if (id === 1) {
+          let b = Array(2).fill(null);
+          b[0] = a[0];
+          b[1] = a[1];
+          let index = G.p1Cards.indexOf(b);
+          if (index > -1) G.p1Cards.splice(index, 1);
+        } else if (id === 2) {
+          let b = Array(2).fill(null);
+          b[0] = a[0];
+          b[1] = a[1];
+          let index = G.p2Cards.indexOf(b);
+          if (index > -1) G.p2Cards.splice(index, 1);
+        } else if (id === 3) {
+          let b = Array(2).fill(null);
+          b[0] = a[0];
+          b[1] = a[1];
+          let index = G.p3Cards.indexOf(b);
+          if (index > -1) G.p3Cards.splice(index, 1);
+        }
+        if (G.tableIndex > 3) G.tableIndex = 0;
+        if (G.moveSuit !== a[0]) {
+          let b = Array(3).fill(null);
+          b[0] = G.moveSuit;
+          b[1] = -1;
+          b[2] = -1;
+          for (let i = 0; i < G.tableIndex; ++i) {
+            if (G.table[i][1] > b[1] && G.table[i][0] === G.moveSuit) {
+              b[1] = G.table[i][1];
+              b[2] = G.table[i][2];
             }
-          } else if (playerID === 2) {
-            if (G.p2Cards[i][0] === getSuit(G.table[G.tableIndex])) {
-              return false;
+          }
+          if (b[3] === 0) {
+            for (let i = 0; i < G.tableIndex; ++i) {
+              G.p0Cards.push(G.table[i]);
             }
-          } else if (playerID === 3) {
-            if (G.p3Cards[i][0] === getSuit(G.table[G.tableIndex])) {
-              return false;
+            G.p0Cards.sort(function(a, b) {
+              return a[1] - b[1];
+            });
+            G.p0Cards.sort(function(a, b) {
+              return a[0] - b[0];
+            });
+          }
+          if (b[3] === 1) {
+            for (let i = 0; i < G.tableIndex; ++i) {
+              G.p1Cards.push(G.table[i]);
             }
+            G.p1Cards.sort(function(a, b) {
+              return a[1] - b[1];
+            });
+            G.p1Cards.sort(function(a, b) {
+              return a[0] - b[0];
+            });
           }
-        }
-      }
-      return true;
-    }
-  },
-  playCard(G, ctx, id, card) {
-    let a = Array(3).fill(null);
-    a[0] = getSuit(card);
-    a[1] = getDegree(card);
-    a[2] = id;
-    if (this.valid(id)) {
-      G.table.push(a);
-      G.tableIndex++;
-      if (G.tableIndex > 3) G.tableIndex = 0;
-      if (G.moveSuit !== a[0]) {
-        //NEED TO FIX THE LOOP THAT GIVES THE CARDS FROM TABLE TO THULLA GUY
-        //CURRENTLY BEING GIVEN TO ONE WHO COMMENCED THE THULLA
-        let b = Array(3).fill(null);
-        b[0] = G.moveSuit;
-        b[1] = -1;
-        b[2] = -1;
-        for (let i = 0; i < G.tableIndex; ++i) {
-          if (G.table[i][1] > b[1] && G.table[i][0] === G.moveSuit) {
-            b[1] = G.table[i][1];
-            b[2] = G.table[i][2];
+          if (b[3] === 2) {
+            for (let i = 0; i < G.tableIndex; ++i) {
+              G.p2Cards.push(G.table[i]);
+            }
+            G.p2Cards.sort(function(a, b) {
+              return a[1] - b[1];
+            });
+            G.p2Cards.sort(function(a, b) {
+              return a[0] - b[0];
+            });
           }
-        }
-        if (b[3] === 0) {
-          for (let i = 0; i < G.tableIndex; ++i) {
-            G.p0Cards.push(G.table[i]);
+          if (b[3] === 3) {
+            for (let i = 0; i < G.tableIndex; ++i) {
+              G.p3Cards.push(G.table[i]);
+            }
+            G.p3Cards.sort(function(a, b) {
+              return a[1] - b[1];
+            });
+            G.p3Cards.sort(function(a, b) {
+              return a[0] - b[0];
+            });
           }
-          G.p0Cards.sort(function(a, b) {
-            return a[1] - b[1];
-          });
-          G.p0Cards.sort(function(a, b) {
-            return a[0] - b[0];
-          });
-        }
-        if (b[3] === 1) {
-          for (let i = 0; i < G.tableIndex; ++i) {
-            G.p1Cards.push(G.table[i]);
-          }
-          G.p1Cards.sort(function(a, b) {
-            return a[1] - b[1];
-          });
-          G.p1Cards.sort(function(a, b) {
-            return a[0] - b[0];
-          });
-        }
-        if (b[3] === 2) {
-          for (let i = 0; i < G.tableIndex; ++i) {
-            G.p2Cards.push(G.table[i]);
-          }
-          G.p2Cards.sort(function(a, b) {
-            return a[1] - b[1];
-          });
-          G.p2Cards.sort(function(a, b) {
-            return a[0] - b[0];
-          });
-        }
-        if (b[3] === 3) {
-          for (let i = 0; i < G.tableIndex; ++i) {
-            G.p3Cards.push(G.table[i]);
-          }
-          G.p3Cards.sort(function(a, b) {
-            return a[1] - b[1];
-          });
-          G.p3Cards.sort(function(a, b) {
-            return a[0] - b[0];
-          });
         }
       }
     }

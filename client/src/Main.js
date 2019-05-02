@@ -50,8 +50,11 @@ const gameRoute = () => (
   </div>
 );
 class Main extends Component {
+  state = {
+    playerID: null
+  };
   render() {
-    //if (this.state.playerID === null) this.setState({ playerID: "0" });
+    if (this.state.playerID === null) this.setState({ playerID: "0" });
     return (
       <Provider store={store}>
         <Router>
