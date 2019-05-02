@@ -26,19 +26,15 @@ class Board extends Component {
   deal = () => {
     this.props.moves.deal();
     this.setState({ started: true });
-    console.log("hello")
     let cards = [];
     if (this.state.started) {
-      console.log("hello")
       if (this.props.G.deck) {
-        console.log("hello")
         for (var i = 0; i < 13; ++i) {
           var imgsrc = "/cards/default/" + this.props.G.deck[i][0] + ".svg";
           let newElement = <img src={imgsrc} id={this.props.G.deck[i][0]} />;
           cards.push(newElement);
         }
       }
-      console.log("hello")
       //game = <div className="cards">a</div>;
       return <tbody>{cards}</tbody>;
     }
