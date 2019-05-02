@@ -15,8 +15,8 @@ import Login from "./components/auth/Login";
 import PrivateRoute from "./components/private-route/PrivateRoute";
 import Dashboard from "./components/dashboard/Dashboard";
 import Profile from "./components/game/Profile";
-
-import ThullaClient from "./components/game/ThullaClient";
+import SelectPlayer from "./SelectPlayer";
+import { Thulla } from "./components/game/Game";
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -38,23 +38,8 @@ if (localStorage.jwtToken) {
   }
 }
 
-const gameRoute = () => (
-  <div className="list">
-    Player 0<ThullaClient playerID="0" />
-    <br />
-    Player 1<ThullaClient playerID="1" />
-    <br />
-    Player 2<ThullaClient playerID="2" />
-    <br />
-    Player 3<ThullaClient playerID="3" />
-  </div>
-);
 class Main extends Component {
-  state = {
-    playerID: null
-  };
   render() {
-    if (this.state.playerID === null) this.setState({ playerID: "0" });
     return (
       <Provider store={store}>
         <Router>
@@ -65,7 +50,7 @@ class Main extends Component {
             <Route exact path="/login" component={Login} />
             <Switch>
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
-              <PrivateRoute exact path="/game" component={gameRoute} />
+              <PrivateRoute exact path="/game" component={SelectPlayer} />
               <PrivateRoute exact path="/profile" component={Profile} />
             </Switch>
           </div>
