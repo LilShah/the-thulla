@@ -22,23 +22,25 @@ class Profile extends Component {
     this.props.logoutUser();
   };
 
-  componentDidMount() {
-    axios
-      .get("api/get-data")
-      .then(response => {
-        this.setState({
-          name: response.name,
-          xp: response.xp,
-          level: response.level,
-          played: response.played,
-          wins: response.wins,
-          losses: response.losses
+  /* componentDidMount() {
+    var MongoClient = require("mongodb").MongoClient;
+    var url =
+      "mongodb+srv://LilShah:lullimeri@thulladb-w9qjp.gcp.mongodb.net/Thulla?retryWrites=true";
+    MongoClient.connect(url, function(err, db) {
+      if (err) throw err;
+      var dbo = db.db("Thulla");
+      const user = this.props.auth;
+      var query = { name: user.name };
+      dbo
+        .collection("customers")
+        .find(query)
+        .toArray(function(err, result) {
+          if (err) throw err;
+          console.log(result);
+          db.close();
         });
-      })
-      .catch(function(err) {
-        console.log(err);
-      });
-  }
+    });
+  } */
   render() {
     const { user } = this.props.auth;
     return (
@@ -46,14 +48,13 @@ class Profile extends Component {
         <div className="row">
           <div className="landing-copy col s12">
             <h4>
-              
               <p className="flow-text grey-text text-darken-1">
                 You are logged into{" "}
                 <span style={{ fontFamily: "monospace" }}>Thulla</span> 👏
               </p>
               <p className="flow-text grey-text text-darken-1 col s8">
                 name: {user.name}
-                <span style={{ fontFamily: "monospace" }}></span>
+                <span style={{ fontFamily: "monospace" }} />
               </p>
               <p className="flow-text grey-text text-darken-1 col s8">
                 xp: 0
@@ -78,29 +79,29 @@ class Profile extends Component {
             </h4>
           </div>
           <button
-              style={{
-                width: "150px",
-                borderRadius: "3px",
-                letterSpacing: "1.5px",
-                marginTop: "1rem"
-              }}
-              onClick={this.onLogoutClick}
-              className="btn btn-large waves-effect waves-light hoverable blue accent-3 col 12"
-            >
-              Logout
-            </button>
-            <Link
-              to="/dashboard"
-              style={{
-                width: "140px",
-                borderRadius: "3px",
-                letterSpacing: "1.5px",
-                margin: "1rem"
-              }}
-              className="btn btn-large waves-effect waves-light hoverable blue accent-3 col 12"
-            >
-              Back
-            </Link>
+            style={{
+              width: "150px",
+              borderRadius: "3px",
+              letterSpacing: "1.5px",
+              marginTop: "1rem"
+            }}
+            onClick={this.onLogoutClick}
+            className="btn btn-large waves-effect waves-light hoverable blue accent-3 col 12"
+          >
+            Logout
+          </button>
+          <Link
+            to="/dashboard"
+            style={{
+              width: "140px",
+              borderRadius: "3px",
+              letterSpacing: "1.5px",
+              margin: "1rem"
+            }}
+            className="btn btn-large waves-effect waves-light hoverable blue accent-3 col 12"
+          >
+            Back
+          </Link>
         </div>
       </div>
     );
