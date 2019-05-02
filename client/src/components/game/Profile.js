@@ -44,16 +44,40 @@ class Profile extends Component {
     return (
       <div style={{ height: "75vh" }} className="container valign-wrapper">
         <div className="row">
-          <div className="landing-copy col s12 center-align">
+          <div className="landing-copy col s12">
             <h4>
-              <b>Hey there,</b> {user.name}
-              <b>Hey there,</b> {this.state.email}
+              
               <p className="flow-text grey-text text-darken-1">
                 You are logged into{" "}
                 <span style={{ fontFamily: "monospace" }}>Thulla</span> 👏
               </p>
+              <p className="flow-text grey-text text-darken-1 col s8">
+                name: {user.name}
+                <span style={{ fontFamily: "monospace" }}></span>
+              </p>
+              <p className="flow-text grey-text text-darken-1 col s8">
+                xp:{user.xp}
+                <span style={{ fontFamily: "monospace" }}></span>
+              </p>
+              <p className="flow-text grey-text text-darken-1 col s8">
+                level:{user.level}
+                <span style={{ fontFamily: "monospace" }}></span>
+              </p>
+              <p className="flow-text grey-text text-darken-1 col s8">
+                played:{user.played}
+                <span style={{ fontFamily: "monospace" }}></span>
+              </p>
+              <p className="flow-text grey-text text-darken-1 col s8">
+                wins:{user.wins}
+                <span style={{ fontFamily: "monospace" }}></span>
+              </p>
+              <p className="flow-text grey-text text-darken-1 col s8">
+                losses:{user.losses}
+                <span style={{ fontFamily: "monospace" }}></span>
+              </p>  
             </h4>
-            <button
+          </div>
+          <button
               style={{
                 width: "150px",
                 borderRadius: "3px",
@@ -61,7 +85,7 @@ class Profile extends Component {
                 marginTop: "1rem"
               }}
               onClick={this.onLogoutClick}
-              className="btn btn-large waves-effect waves-light hoverable blue accent-3"
+              className="btn btn-large waves-effect waves-light hoverable blue accent-3 col 12"
             >
               Logout
             </button>
@@ -73,11 +97,10 @@ class Profile extends Component {
                 letterSpacing: "1.5px",
                 margin: "1rem"
               }}
-              className="btn btn-large waves-effect waves-light hoverable blue accent-3"
+              className="btn btn-large waves-effect waves-light hoverable blue accent-3 col 12"
             >
               Back
             </Link>
-          </div>
         </div>
       </div>
     );

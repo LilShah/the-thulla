@@ -38,6 +38,10 @@ class Login extends Component {
     this.setState({ [e.target.id]: e.target.value });
   };
 
+  guest = () => {
+    this.setState({ email: "Guest@guest.com", password: "123456" });
+  };
+
   onSubmit = e => {
     e.preventDefault();
 
@@ -115,6 +119,21 @@ class Login extends Component {
                   className="btn btn-large waves-effect waves-light hoverable blue accent-3"
                 >
                   Login
+                </button>
+                <button
+                  style={{
+                    width: "150px",
+                    borderRadius: "3px",
+                    letterSpacing: "1.5px",
+                    marginTop: "1rem",
+                    marginLeft: "1rem"
+
+                  }}
+                  type="submit"
+                  className="btn btn-large waves-effect waves-light hoverable blue accent-3"
+                  onClick={this.guest}
+                >
+                  Guest
                 </button>
               </div>
             </form>
