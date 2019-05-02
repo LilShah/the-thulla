@@ -1,14 +1,15 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import index from "./index.css"
+import index from "./index.css";
 
 class Board extends Component {
   constructor(props) {
     super(props);
     this.onClick = this.onClick.bind(this);
     this.state = {
-      started: false,
-      arr: null
+      started: 0,
+      arr: null,
+      card: null
     };
   }
 
@@ -24,22 +25,18 @@ class Board extends Component {
   boardSet = () => {};
   deal = () => {
     this.props.moves.deal();
-    this.setState({ started: true });
+    this.setState({ started: this.state.started + 1 });
     let cards = [];
-    if (this.state.started) {
-      if (this.props.G.deck) {
-        for (var i = 0; i < 13; ++i) {
-          var imgsrc = "/cards/default/" + this.props.G.deck[i][0] + ".svg";
-          let newElement = <img src={imgsrc} id={this.props.G.deck[i][0]} />;
-          cards.push(newElement);
-        }
-      }
-      //game = <div className="cards">a</div>;
-      return <tbody>{cards}</tbody>;
+    for (var i = 0; i < 13; ++i) {
+      var imgsrc = "/cards/default/" + this.props.G.deck[i][0] + ".svg";
+      let newElement = <img src={imgsrc} id={this.props.G.deck[i][0]} />;
+      cards.push(newElement);
     }
+    //game = <div className="cards">a</div>;
+    return <tbody>{cards}</tbody>;
   };
   playCard = () => {
-    this.props.moves.playCard(0, "CJ");
+    this.props.moves.playCard(0, this.state.card);
   };
 
   onClick() {
