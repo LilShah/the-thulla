@@ -12,7 +12,7 @@ const cards = [
   "C9",
   "C10",
   "CJ",
-  "CQ,",
+  "CQ",
   "CK",
   "DA",
   "D2",
@@ -25,7 +25,7 @@ const cards = [
   "D9",
   "D10",
   "DJ",
-  "DQ,",
+  "DQ",
   "DK",
   "HA",
   "H2",
@@ -38,7 +38,7 @@ const cards = [
   "H9",
   "H10",
   "HJ",
-  "HQ,",
+  "HQ",
   "HK",
   "SA",
   "S2",
@@ -51,7 +51,7 @@ const cards = [
   "S9",
   "S10",
   "SJ",
-  "SQ,",
+  "SQ",
   "SK"
 ];
 function getSuit(card) {
