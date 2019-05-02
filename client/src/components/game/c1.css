@@ -1,0 +1,10 @@
+.column1 {
+    float: left;
+    width: 33.33%;
+    padding: 5px;
+  }
+  .column2 {
+    align-items: right;
+    width: 33.33%;
+    padding: 5px;
+  }

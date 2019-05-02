@@ -64,6 +64,32 @@ class Board extends Component {
         </button>{" "}
         {this.boardSet}
         {this.state.arr}
+        <div className=".column1">
+        <img src="/cards/default/RED_BACK(1).svg" ></img>
+        <img src="/cards/default/RED_BACK(1).svg" ></img>
+        </div>
+        <div className=".column1">
+        <img src="/cards/default/RED_BACK(1).svg" ></img>
+        <img src="/cards/default/RED_BACK(1).svg" ></img>
+        </div>
+        <div className=".column1">
+        <img src="/cards/default/RED_BACK(1).svg" ></img>
+        <img src="/cards/default/RED_BACK(1).svg" ></img>
+        </div>
+        <div className=".column1">
+        <img src="/cards/default/RED_BACK(1).svg" ></img>
+        <img src="/cards/default/RED_BACK(1).svg" ></img>
+        </div>
+        <div className=".column1">
+        <img src="/cards/default/RED_BACK(1).svg" ></img>
+        <img src="/cards/default/RED_BACK(1).svg" ></img>
+        </div>
+        <div className=".column1">
+        <img src="/cards/default/RED_BACK(1).svg" ></img>
+        <img src="/cards/default/RED_BACK(1).svg" ></img>
+        </div>
+
+        
       </div>
     );
   }
