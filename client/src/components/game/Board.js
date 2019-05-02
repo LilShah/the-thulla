@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import index from "./index.css";
+import c1 from "./c1.css";
 
 class Board extends Component {
   constructor(props) {
@@ -61,32 +62,62 @@ class Board extends Component {
         </button>{" "}
         {this.boardSet}
         {this.state.arr}
-        <div className=".column1">
-        <img src="/cards/default/RED_BACK(1).svg" ></img>
-        <img src="/cards/default/RED_BACK(1).svg" ></img>
-        </div>
-        <div className=".column1">
-        <img src="/cards/default/RED_BACK(1).svg" ></img>
-        <img src="/cards/default/RED_BACK(1).svg" ></img>
-        </div>
-        <div className=".column1">
-        <img src="/cards/default/RED_BACK(1).svg" ></img>
-        <img src="/cards/default/RED_BACK(1).svg" ></img>
-        </div>
-        <div className=".column1">
-        <img src="/cards/default/RED_BACK(1).svg" ></img>
-        <img src="/cards/default/RED_BACK(1).svg" ></img>
-        </div>
-        <div className=".column1">
-        <img src="/cards/default/RED_BACK(1).svg" ></img>
-        <img src="/cards/default/RED_BACK(1).svg" ></img>
-        </div>
-        <div className=".column1">
-        <img src="/cards/default/RED_BACK(1).svg" ></img>
-        <img src="/cards/default/RED_BACK(1).svg" ></img>
+
+        <div id="gameRender">
+        <div class="enclosureBottom">
+          <div class="bottom">
+            {/* <img class="cards" src="/cards/default/RED_BACK.svg" /> */}
+            <img class="cards" src="/cards/default/RED_BACK.svg" />
+            {/* <img class="cards" src="/cards/default/RED_BACK.svg" /> */}
+            <img class="cards" src="/cards/default/RED_BACK.svg" />
+            <img class="cards" src="/cards/default/RED_BACK.svg" />
+            {/* <img class="cards" src="/cards/default/RED_BACK.svg" /> */}
+            <img class="cards" src="/cards/default/RED_BACK.svg" />
+            <img class="cards" src="/cards/default/RED_BACK.svg" />
+            {/* <img class="cards" src="/cards/default/RED_BACK.svg" /> */}
+            <img class="cards" src="/cards/default/RED_BACK.svg" />
+            <img class="cards" src="/cards/default/RED_BACK.svg" />
+            {/* <img class="cards" src="/cards/default/RED_BACK.svg" /> */}
+            <img class="cards" src="/cards/default/RED_BACK.svg" />
+          </div>
         </div>
 
-        
+        <div class="enclosureLeft">
+          <div class="left">
+            {/* <img class="cardsVert" src="/cards/default/RED_BACK.svg" /> */}
+            <img class="cardsVert" src="/cards/default/RED_BACK.svg" />
+            {/* <img class="cardsVert" src="/cards/default/RED_BACK.svg" /> */}
+            <img class="cardsVert" src="/cards/default/RED_BACK.svg" />
+            <img class="cardsVert" src="/cards/default/RED_BACK.svg" />
+            {/* <img class="cardsVert" src="/cards/default/RED_BACK.svg" /> */}
+            <img class="cardsVert" src="/cards/default/RED_BACK.svg" />
+            <img class="cardsVert" src="/cards/default/RED_BACK.svg" />
+            {/* <img class="cardsVert" src="/cards/default/RED_BACK.svg" /> */}
+            <img class="cardsVert" src="/cards/default/RED_BACK.svg" />
+            <img class="cardsVert" src="/cards/default/RED_BACK.svg" />
+            {/* <img class="cardsVert" src="/cards/default/RED_BACK.svg" /> */}
+            <img class="cardsVert" src="/cards/default/RED_BACK.svg" />
+          </div>
+        </div>
+
+        <div class="enclosureRight">
+          <div class="right">
+            {/* <img class="cardsVert" src="/cards/default/RED_BACK.svg" /> */}
+            <img class="cardsVert" src="/cards/default/RED_BACK.svg" />
+            {/* <img class="cardsVert" src="/cards/default/RED_BACK.svg" /> */}
+            <img class="cardsVert" src="/cards/default/RED_BACK.svg" />
+            <img class="cardsVert" src="/cards/default/RED_BACK.svg" />
+            {/* <img class="cardsVert" src="/cards/default/RED_BACK.svg" /> */}
+            <img class="cardsVert" src="/cards/default/RED_BACK.svg" />
+            <img class="cardsVert" src="/cards/default/RED_BACK.svg" />
+            {/* <img class="cardsVert" src="/cards/default/RED_BACK.svg" /> */}
+            <img class="cardsVert" src="/cards/default/RED_BACK.svg" />
+            <img class="cardsVert" src="/cards/default/RED_BACK.svg" />
+            {/* <img class="cardsVert" src="/cards/default/RED_BACK.svg" /> */}
+            <img class="cardsVert" src="/cards/default/RED_BACK.svg" />
+          </div>
+        </div>
+      </div>
       </div>
     );
   }

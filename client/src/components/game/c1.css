@@ -1,10 +1,132 @@
-.column1 {
+img.cards {
+    margin: 5px;
+    width: 100px;
+    top: 10px;
     float: left;
-    width: 33.33%;
-    padding: 5px;
+    -webkit-transition: margin 0.5s ease-out;
+    -moz-transition: margin 0.5s ease-out;
+    -o-transition: margin 0.5s ease-out;
+    -webkit-box-shadow: 0px 0px 10px 0px #222;
+    box-shadow: 0px 0px 10px 0px #222;
   }
-  .column2 {
-    align-items: right;
-    width: 33.33%;
-    padding: 5px;
+  img.cards:hover {
+    cursor: pointer;
+    margin-top: 5px;
   }
+  .spread {
+    width: 350px;
+    height: 250px;
+    position: relative;
+  }
+  
+  .spread > .cards {
+    position: absolute;
+    top: 0;
+    left: 0;
+    -webkit-transition: top 0.3s ease, left 0.3s ease;
+    -moz-transition: top 0.3s ease, left 0.3s ease;
+    -o-transition: top 0.3s ease, left 0.3s ease;
+    -ms-transition: top 0.3s ease, left 0.3s ease;
+    transition: top 0.3s ease, left 0.3s ease;
+  }
+  img.cardsVert {
+    margin: 5px;
+    width: 50px;
+    top: 10px;
+    float: left;
+    -webkit-transition: margin 0.5s ease-out;
+    -moz-transition: margin 0.5s ease-out;
+    -o-transition: margin 0.5s ease-out;
+    -webkit-box-shadow: 0px 0px 10px 0px #222;
+    box-shadow: 0px 0px 10px 0px #222;
+  }
+  img.cardsVert:hover {
+    cursor: pointer;
+    margin-top: 5px;
+  }
+  div.bottom {
+    position: fixed;
+    bottom: 0;
+    height: 200px;
+    width: 1500px;
+    left: 35%;
+  }
+  div.left {
+    position: fixed;
+    bottom: 450;
+    height: 800;
+    width: 120px;
+    left: 1%;
+    top: 37%;
+  }
+  div.right {
+    position: fixed;
+    bottom: 450;
+    height: 800;
+    width: 120px;
+    right: 8.7%;
+    top: 37%;
+  }
+  div.enclosureBottom {
+    position: fixed;
+    bottom: 10px;
+    height: 200px;
+    width: 1270px;
+    left: 30%;
+    background-color: #123c69;
+    -webkit-box-shadow: 0px 0px 10px 0px #222;
+    box-shadow: 0px 0px 10px 0px #222;
+  }
+  div.enclosureLeft {
+    position: fixed;
+    top: 30%;
+    height: 580px;
+    width: 200px;
+    left: 10px;
+    
+    background-color: #123c69;
+    -webkit-box-shadow: 0px 0px 10px 0px #222;
+    box-shadow: 0px 0px 10px 0px #222;
+  }
+  div.enclosureRight {
+    position: fixed;
+    top: 30%;
+    height: 580px;
+    width: 200px;
+    right: 320px;
+    background-color: #123c69;
+    -webkit-box-shadow: 0px 0px 10px 0px #222;
+    box-shadow: 0px 0px 10px 0px #222;
+  }
+  div.gameRender {
+    background-color: #f2f2f2;
+  }
+  div.topMid {
+    position: fixed;
+    height: 100px;
+    transform: rotate(180deg);
+    top: 400px;
+    left: 700px;
+  }
+  div.rightMid {
+    position: fixed;
+    height: 100px;
+    transform: rotate(90deg);
+    top: 450px;
+    left: 800px;
+  }
+  div.bottomMid {
+    position: fixed;
+    height: 100px;
+    transform: rotate(0deg);
+    top: 500px;
+    left: 700px;
+  }
+  div.leftMid {
+    position: fixed;
+    height: 100px;
+    transform: rotate(270deg);
+    top: 450px;
+    left: 600px;
+  }
+  
