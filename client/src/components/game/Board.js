@@ -22,6 +22,7 @@ class Board extends Component {
     isMultiplayer: PropTypes.bool
   };
   playCard = (a, b) => {
+    console.log(b);
     this.props.moves.playCard(a, b);
   };
 
